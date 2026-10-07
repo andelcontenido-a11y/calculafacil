@@ -1,51 +1,391 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalculaFácil</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de Porcentajes | CalculaFácil</title>
+
+<meta name="description" content="Calculadora de porcentajes online gratis. Calcula porcentajes, aumentos, descuentos y qué porcentaje representa una cantidad.">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+header {
+    background: #2563eb;
+    color: white;
+    padding: 22px 20px;
+}
+
+.header {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+.calculator {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.calculation {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.calculation:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 0;
+    color: #111827;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 7px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    font-size: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.result {
+    display: none;
+    margin-top: 18px;
+    padding: 18px;
+    background: #eff6ff;
+    border-radius: 10px;
+    color: #1d4ed8;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.info {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.info h2 {
+    font-size: 25px;
+}
+
+.info p {
+    color: #4b5563;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .calculator,
+    .info {
+        padding: 22px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <h1>CalculaFácil</h1>
+<header>
+    <div class="header">
+        <div class="logo">CalculaFácil</div>
+        <div>Herramientas gratuitas</div>
+    </div>
+</header>
 
-    <p>Calculadoras gratuitas y sencillas.</p>
+<main>
 
-    <h2>Calculadora de sueldo neto</h2>
+<h1>Calculadora de Porcentajes</h1>
 
-    <label>Salario bruto anual:</label>
-    <input type="number" id="salario">
+<p class="subtitle">
+Calcula porcentajes, aumentos, descuentos y mucho más de forma rápida y gratuita.
+</p>
 
-    <br><br>
+<div class="calculator">
 
-    <label>IRPF (%):</label>
-    <input type="number" id="irpf">
+    <div class="calculation">
 
-    <br><br>
+        <h2>¿Cuánto es un porcentaje de una cantidad?</h2>
 
-    <button onclick="calcular()">Calcular</button>
+        <label>Porcentaje (%)</label>
+        <input type="number" id="p1" placeholder="Ejemplo: 20">
 
-    <h3 id="resultado"></h3>
+        <label>Cantidad</label>
+        <input type="number" id="n1" placeholder="Ejemplo: 500">
 
-    <script>
-        function calcular() {
+        <button onclick="calcular1()">Calcular</button>
 
-            let salario = Number(document.getElementById("salario").value);
-            let irpf = Number(document.getElementById("irpf").value);
+        <div class="result" id="r1"></div>
 
-            if (salario <= 0 || irpf < 0) {
-                document.getElementById("resultado").innerText =
-                    "Introduce los datos correctamente.";
-                return;
-            }
+    </div>
 
-            let neto = salario - (salario * irpf / 100);
 
-            document.getElementById("resultado").innerText =
-                "Sueldo neto aproximado: " + neto.toFixed(2) + " € al año";
-        }
-    </script>
+    <div class="calculation">
+
+        <h2>¿Qué porcentaje representa una cantidad?</h2>
+
+        <label>Parte</label>
+        <input type="number" id="p2" placeholder="Ejemplo: 30">
+
+        <label>Total</label>
+        <input type="number" id="n2" placeholder="Ejemplo: 150">
+
+        <button onclick="calcular2()">Calcular</button>
+
+        <div class="result" id="r2"></div>
+
+    </div>
+
+
+    <div class="calculation">
+
+        <h2>Aumentar una cantidad en un porcentaje</h2>
+
+        <label>Cantidad inicial</label>
+        <input type="number" id="n3" placeholder="Ejemplo: 100">
+
+        <label>Aumento (%)</label>
+        <input type="number" id="p3" placeholder="Ejemplo: 20">
+
+        <button onclick="calcular3()">Calcular</button>
+
+        <div class="result" id="r3"></div>
+
+    </div>
+
+
+    <div class="calculation">
+
+        <h2>Reducir una cantidad en un porcentaje</h2>
+
+        <label>Cantidad inicial</label>
+        <input type="number" id="n4" placeholder="Ejemplo: 100">
+
+        <label>Reducción (%)</label>
+        <input type="number" id="p4" placeholder="Ejemplo: 20">
+
+        <button onclick="calcular4()">Calcular</button>
+
+        <div class="result" id="r4"></div>
+
+    </div>
+
+</div>
+
+
+<div class="info">
+
+<h2>¿Cómo calcular un porcentaje?</h2>
+
+<p>
+Calcular un porcentaje es muy sencillo. Para saber cuánto representa
+un porcentaje de una cantidad, multiplica la cantidad por el porcentaje
+y divide el resultado entre 100.
+</p>
+
+<p>
+Por ejemplo, para calcular el 20 % de 500:
+</p>
+
+<p>
+<strong>500 × 20 ÷ 100 = 100</strong>
+</p>
+
+<p>
+Por lo tanto, el 20 % de 500 es 100.
+</p>
+
+<h2>Calculadora de porcentajes online</h2>
+
+<p>
+Utiliza nuestras herramientas para calcular porcentajes,
+aumentos y reducciones de forma rápida y gratuita.
+No necesitas instalar ninguna aplicación.
+</p>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 CalculaFácil · Calculadoras gratuitas
+</footer>
+
+
+<script>
+
+function mostrar(id, texto) {
+    const resultado = document.getElementById(id);
+    resultado.innerText = texto;
+    resultado.style.display = "block";
+}
+
+
+function calcular1() {
+
+    const porcentaje = Number(document.getElementById("p1").value);
+    const cantidad = Number(document.getElementById("n1").value);
+
+    if (isNaN(porcentaje) || isNaN(cantidad)) {
+        alert("Introduce los dos valores.");
+        return;
+    }
+
+    const resultado = cantidad * porcentaje / 100;
+
+    mostrar(
+        "r1",
+        porcentaje + "% de " + cantidad + " = " + resultado
+    );
+}
+
+
+function calcular2() {
+
+    const parte = Number(document.getElementById("p2").value);
+    const total = Number(document.getElementById("n2").value);
+
+    if (total === 0 || isNaN(parte) || isNaN(total)) {
+        alert("Introduce valores válidos.");
+        return;
+    }
+
+    const resultado = parte / total * 100;
+
+    mostrar(
+        "r2",
+        parte + " representa el " + resultado.toFixed(2) + "% de " + total
+    );
+}
+
+
+function calcular3() {
+
+    const cantidad = Number(document.getElementById("n3").value);
+    const porcentaje = Number(document.getElementById("p3").value);
+
+    if (isNaN(cantidad) || isNaN(porcentaje)) {
+        alert("Introduce los dos valores.");
+        return;
+    }
+
+    const resultado = cantidad * (1 + porcentaje / 100);
+
+    mostrar(
+        "r3",
+        "Resultado: " + resultado.toFixed(2)
+    );
+}
+
+
+function calcular4() {
+
+    const cantidad = Number(document.getElementById("n4").value);
+    const porcentaje = Number(document.getElementById("p4").value);
+
+    if (isNaN(cantidad) || isNaN(porcentaje)) {
+        alert("Introduce los dos valores.");
+        return;
+    }
+
+    const resultado = cantidad * (1 - porcentaje / 100);
+
+    mostrar(
+        "r4",
+        "Resultado: " + resultado.toFixed(2)
+    );
+}
+
+</script>
 
 </body>
 </html>
