@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Sueldo Neto | CalculaFácil</title>
+    <meta name="description" content="Calculadora de sueldo neto online gratis. Calcula aproximadamente cuánto cobrarás al mes a partir de tu salario bruto en España.">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #1769e0;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            background: white;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            background: #1769e0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1255b5;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 18px;
+            background: #eaf2ff;
+            border-radius: 6px;
+            font-size: 18px;
+        }
+
+        .resultado strong {
+            font-size: 22px;
+        }
+
+        .aviso {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        a {
+            color: #1769e0;
+            text-decoration: none;
+        }
+
+        .fila {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .fila {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>CalculaFácil</h1>
+    <p>Herramientas gratuitas</p>
+</header>
+
+<main>
+
+    <div class="card">
+        <h2>Calculadora de sueldo neto</h2>
+
+        <p>
+            Calcula de forma aproximada cuánto puedes cobrar al mes a partir de
+            tu salario bruto anual en España.
+        </p>
+
+        <label for="bruto">Salario bruto anual (€):</label>
+        <input type="number" id="bruto" min="0" step="0.01" placeholder="Ejemplo: 24000">
+
+        <div class="fila">
+            <div>
+                <label for="pagas">Número de pagas:</label>
+                <select id="pagas">
+                    <option value="12">12 pagas</option>
+                    <option value="14">14 pagas</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="situacion">Situación:</label>
+                <select id="situacion">
+                    <option value="general">Situación general</option>
+                    <option value="discapacidad">Persona con discapacidad</option>
+                </select>
+            </div>
+        </div>
+
+        <button onclick="calcularSueldo()">Calcular sueldo neto</button>
+
+        <div id="resultado" class="resultado" style="display:none;"></div>
+    </div>
+
+    <div class="card">
+        <h2>¿Qué es el sueldo neto?</h2>
+
+        <p>
+            El sueldo neto es la cantidad de dinero que finalmente recibe el
+            trabajador después de descontar las cotizaciones a la Seguridad
+            Social y la retención del IRPF correspondiente.
+        </p>
+
+        <p>
+            El salario bruto es la cantidad que aparece antes de aplicar estas
+            deducciones.
+        </p>
+
+        <h2>¿Cómo se calcula?</h2>
+
+        <p>
+            Para obtener el sueldo neto hay que tener en cuenta diferentes
+            factores, como el salario bruto, las cotizaciones a la Seguridad
+            Social, el IRPF, el tipo de contrato y la situación personal y
+            familiar del trabajador.
+        </p>
+
+        <p class="aviso">
+            El resultado de esta calculadora es únicamente orientativo. La
+            cantidad real puede variar según las circunstancias personales,
+            laborales y fiscales de cada trabajador.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Ejemplo</h2>
+
+        <p>
+            Si una persona tiene un salario bruto anual de 24.000 €, el sueldo
+            neto dependerá de sus circunstancias y de las retenciones aplicadas.
+        </p>
+
+        <p>
+            Por eso esta calculadora ofrece una <strong>estimación aproximada</strong>
+            y no sustituye una nómina real.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Otras calculadoras</h2>
+
+        <p><a href="index.html">Calculadora de porcentajes</a></p>
+        <p><a href="iva.html">Calculadora de IVA</a></p>
+        <p><a href="descuentos.html">Calculadora de descuentos</a></p>
+        <p><a href="edad.html">Calculadora de edad</a></p>
+        <p><a href="fechas.html">Calculadora de fechas</a></p>
+        <p><a href="regla-de-tres.html">Calculadora de regla de tres</a></p>
+        <p><a href="imc.html">Calculadora de IMC</a></p>
+    </div>
+
+</main>
+
+<script>
+function calcularSueldo() {
+    const bruto = parseFloat(document.getElementById("bruto").value);
+    const pagas = parseInt(document.getElementById("pagas").value);
+    const situacion = document.getElementById("situacion").value;
+    const resultado = document.getElementById("resultado");
+
+    if (isNaN(bruto) || bruto <= 0) {
+        resultado.style.display = "block";
+        resultado.innerHTML = "Introduce un salario bruto anual válido.";
+        return;
+    }
+
+    /*
+     * Esta calculadora proporciona una estimación simplificada.
+     * No pretende reproducir exactamente una nómina española.
+     */
+
+    let seguridadSocial = bruto * 0.0635;
+
+    if (situacion === "discapacidad") {
+        seguridadSocial = bruto * 0.0600;
+    }
+
+    const baseDespuesSS = bruto - seguridadSocial;
+
+    let irpf;
+
+    if (baseDespuesSS <= 15000) {
+        irpf = 0.02;
+    } else if (baseDespuesSS <= 20000) {
+        irpf = 0.08;
+    } else if (baseDespuesSS <= 25000) {
+        irpf = 0.12;
+    } else if (baseDespuesSS <= 35000) {
+        irpf = 0.15;
+    } else if (baseDespuesSS <= 50000) {
+        irpf = 0.19;
+    } else {
+        irpf = 0.24;
+    }
+
+    const retencionIRPF = baseDespuesSS * irpf;
+    const netoAnual = bruto - seguridadSocial - retencionIRPF;
+    const netoMensual = netoAnual / pagas;
+
+    resultado.style.display = "block";
+
+    resultado.innerHTML =
+        "Sueldo neto aproximado:<br><br>" +
+        "<strong>" +
+        netoMensual.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }) +
+        " € por paga</strong><br><br>" +
+        "Neto anual aproximado: " +
+        netoAnual.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }) +
+        " €<br><br>" +
+        "<span style='font-size:14px;'>Estimación orientativa. El resultado real depende de las circunstancias fiscales y laborales.</span>";
+}
+</script>
+
+</body>
+</html>
