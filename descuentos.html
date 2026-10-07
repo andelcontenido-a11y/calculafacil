@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Descuentos | CalculaFácil</title>
+    <meta name="description" content="Calculadora de descuentos online gratis. Calcula fácilmente cuánto pagarás después de aplicar un descuento y cuánto dinero ahorras.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 22px 20px;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .calculator,
+        .info {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-top: 0;
+            color: #111827;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            font-size: 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #eff6ff;
+            border-radius: 10px;
+            color: #1d4ed8;
+            font-size: 19px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .info p {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+
+        .links {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .links a {
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .calculator,
+            .info,
+            .links {
+                padding: 22px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header">
+        <div class="logo">CalculaFácil</div>
+        <div>Herramientas gratuitas</div>
+    </div>
+</header>
+
+<main>
+
+<h1>Calculadora de Descuentos</h1>
+
+<p class="subtitle">
+Calcula cuánto pagarás después de aplicar un descuento y cuánto dinero ahorrarás.
+</p>
+
+<div class="calculator">
+
+    <h2>Calcular precio con descuento</h2>
+
+    <label for="precio">Precio original (€)</label>
+    <input type="number" id="precio" placeholder="Ejemplo: 100" step="0.01">
+
+    <label for="descuento">Descuento (%)</label>
+    <input type="number" id="descuento" placeholder="Ejemplo: 20" step="0.01">
+
+    <button onclick="calcularDescuento()">Calcular descuento</button>
+
+    <div class="result" id="resultado"></div>
+
+</div>
+
+<div class="info">
+
+    <h2>¿Cómo calcular un descuento?</h2>
+
+    <p>
+        Para calcular un descuento, primero se calcula cuánto dinero
+        representa el porcentaje de descuento y después se resta esa
+        cantidad al precio original.
+    </p>
+
+    <p>
+        Por ejemplo, si un producto cuesta 100 € y tiene un descuento
+        del 20 %, el ahorro es de 20 € y el precio final será de 80 €.
+    </p>
+
+    <h2>Calculadora de descuentos online</h2>
+
+    <p>
+        Utiliza esta calculadora para saber rápidamente cuánto pagarás
+        por un producto después de aplicar un descuento. También podrás
+        saber exactamente cuánto dinero ahorras.
+    </p>
+
+</div>
+
+<div class="links">
+
+    <h2>Otras calculadoras</h2>
+
+    <p>
+        <a href="index.html">Calculadora de porcentajes</a>
+    </p>
+
+    <p>
+        <a href="iva.html">Calculadora de IVA</a>
+    </p>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 CalculaFácil · Calculadoras gratuitas
+</footer>
+
+<script>
+
+function calcularDescuento() {
+
+    const precio = Number(document.getElementById("precio").value);
+    const descuento = Number(document.getElementById("descuento").value);
+
+    if (isNaN(precio) || isNaN(descuento) || precio < 0 || descuento < 0) {
+        alert("Introduce valores válidos.");
+        return;
+    }
+
+    if (descuento > 100) {
+        alert("El descuento no puede ser superior al 100%.");
+        return;
+    }
+
+    const ahorro = precio * descuento / 100;
+    const precioFinal = precio - ahorro;
+
+    const resultado = document.getElementById("resultado");
+
+    resultado.innerHTML =
+        "Ahorras: " + ahorro.toFixed(2) + " €<br>" +
+        "Precio final: " + precioFinal.toFixed(2) + " €";
+
+    resultado.style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
