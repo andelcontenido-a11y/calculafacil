@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="google-site-verification" content="M47URQzEFCewXPulpNQyclQ-XoEoM-8g5WyEubIQ2uY">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Hipoteca | CalculaFácil</title>
+
+    <meta name="description" content="Calculadora de hipoteca online gratis. Calcula la cuota mensual, intereses y coste total de tu hipoteca según el precio, entrada, interés y plazo.">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+
+        header {
+            background-color: #1769aa;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            font-size: 16px;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #1769aa;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background-color: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #12578d;
+        }
+
+        .resultado {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #eef6ff;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .resultado p {
+            margin: 9px 0;
+            font-size: 17px;
+        }
+
+        .resultado .principal {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1769aa;
+        }
+
+        .info {
+            margin-top: 30px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .info h2 {
+            margin-top: 0;
+        }
+
+        .info p {
+            line-height: 1.6;
+        }
+
+        .otras {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .otras h2 {
+            margin-top: 0;
+        }
+
+        .otras p {
+            margin: 10px 0;
+        }
+
+        .otras a {
+            color: #1769aa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .otras a:hover {
+            text-decoration: underline;
+        }
+
+        .aviso {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>CalculaFácil</h1>
+    <p>Herramientas gratuitas para tus cálculos</p>
+</header>
+
+<main>
+
+    <div class="calculator">
+
+        <h2>Calculadora de hipoteca</h2>
+
+        <label for="precio">Precio de la vivienda (€)</label>
+        <input type="number" id="precio" placeholder="Ejemplo: 200000" min="0" step="0.01">
+
+        <label for="entrada">Entrada (€)</label>
+        <input type="number" id="entrada" placeholder="Ejemplo: 40000" min="0" step="0.01">
+
+        <label for="interes">Tipo de interés anual (%)</label>
+        <input type="number" id="interes" placeholder="Ejemplo: 3.5" min="0" step="0.01">
+
+        <label for="plazo">Plazo de la hipoteca (años)</label>
+        <input type="number" id="plazo" placeholder="Ejemplo: 30" min="1" step="1">
+
+        <button onclick="calcularHipoteca()">Calcular hipoteca</button>
+
+        <div class="resultado" id="resultado">
+
+            <p class="principal">
+                Cuota mensual: <span id="cuota"></span> €
+            </p>
+
+            <p>
+                Importe financiado: <strong><span id="financiado"></span> €</strong>
+            </p>
+
+            <p>
+                Total pagado: <strong><span id="total"></span> €</strong>
+            </p>
+
+            <p>
+                Total de intereses: <strong><span id="intereses"></span> €</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <h2>¿Cómo se calcula una hipoteca?</h2>
+
+        <p>
+            La cuota mensual de una hipoteca depende principalmente del importe
+            solicitado, el tipo de interés y el plazo de devolución.
+        </p>
+
+        <p>
+            Esta calculadora utiliza el sistema de amortización francés, uno de
+            los métodos de cálculo de cuotas más habituales en los préstamos
+            hipotecarios.
+        </p>
+
+        <p>
+            Introduce el precio de la vivienda, la cantidad que aportarás como
+            entrada, el tipo de interés anual y los años del préstamo para
+            obtener una estimación de la cuota mensual.
+        </p>
+
+        <p class="aviso">
+            Los resultados son orientativos y no incluyen otros posibles gastos
+            asociados a la compra de una vivienda o a una hipoteca, como
+            impuestos, seguros, comisiones o gastos de formalización.
+        </p>
+
+    </div>
+
+    <div class="otras">
+
+        <h2>Otras calculadoras</h2>
+
+        <p>
+            <a href="index.html">Calculadora de porcentajes</a>
+        </p>
+
+        <p>
+            <a href="iva.html">Calculadora de IVA</a>
+        </p>
+
+        <p>
+            <a href="descuentos.html">Calculadora de descuentos</a>
+        </p>
+
+        <p>
+            <a href="edad.html">Calculadora de edad</a>
+        </p>
+
+        <p>
+            <a href="fechas.html">Calculadora de fechas</a>
+        </p>
+
+        <p>
+            <a href="regla-de-tres.html">Calculadora de regla de tres</a>
+        </p>
+
+        <p>
+            <a href="imc.html">Calculadora de IMC</a>
+        </p>
+
+        <p>
+            <a href="sueldo-neto.html">Calculadora de sueldo neto</a>
+        </p>
+
+    </div>
+
+</main>
+
+<script>
+
+function calcularHipoteca() {
+
+    const precio = parseFloat(document.getElementById("precio").value);
+    const entrada = parseFloat(document.getElementById("entrada").value);
+    const interesAnual = parseFloat(document.getElementById("interes").value);
+    const plazoAnios = parseInt(document.getElementById("plazo").value);
+
+    if (
+        isNaN(precio) ||
+        isNaN(entrada) ||
+        isNaN(interesAnual) ||
+        isNaN(plazoAnios)
+    ) {
+        alert("Introduce todos los datos.");
+        return;
+    }
+
+    if (precio <= 0) {
+        alert("El precio de la vivienda debe ser mayor que 0.");
+        return;
+    }
+
+    if (entrada < 0 || entrada >= precio) {
+        alert("La entrada debe ser mayor o igual que 0 y menor que el precio de la vivienda.");
+        return;
+    }
+
+    if (interesAnual < 0) {
+        alert("El tipo de interés no puede ser negativo.");
+        return;
+    }
+
+    if (plazoAnios <= 0) {
+        alert("El plazo debe ser mayor que 0.");
+        return;
+    }
+
+    const capital = precio - entrada;
+    const meses = plazoAnios * 12;
+    const interesMensual = interesAnual / 100 / 12;
+
+    let cuota;
+
+    if (interesMensual === 0) {
+
+        cuota = capital / meses;
+
+    } else {
+
+        cuota =
+            capital *
+            (
+                interesMensual *
+                Math.pow(1 + interesMensual, meses)
+            ) /
+            (
+                Math.pow(1 + interesMensual, meses) - 1
+            );
+    }
+
+    const totalPagado = cuota * meses;
+    const totalIntereses = totalPagado - capital;
+
+    document.getElementById("financiado").textContent =
+        capital.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+    document.getElementById("cuota").textContent =
+        cuota.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+    document.getElementById("total").textContent =
+        totalPagado.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+    document.getElementById("intereses").textContent =
+        totalIntereses.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+    document.getElementById("resultado").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
