@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalculaFácil</title>
+</head>
 
+<body>
+
+    <h1>CalculaFácil</h1>
+
+    <p>Calculadoras gratuitas y sencillas.</p>
+
+    <h2>Calculadora de sueldo neto</h2>
+
+    <label>Salario bruto anual:</label>
+    <input type="number" id="salario">
+
+    <br><br>
+
+    <label>IRPF (%):</label>
+    <input type="number" id="irpf">
+
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <h3 id="resultado"></h3>
+
+    <script>
+        function calcular() {
+
+            let salario = Number(document.getElementById("salario").value);
+            let irpf = Number(document.getElementById("irpf").value);
+
+            if (salario <= 0 || irpf < 0) {
+                document.getElementById("resultado").innerText =
+                    "Introduce los datos correctamente.";
+                return;
+            }
+
+            let neto = salario - (salario * irpf / 100);
+
+            document.getElementById("resultado").innerText =
+                "Sueldo neto aproximado: " + neto.toFixed(2) + " € al año";
+        }
+    </script>
+
+</body>
+</html>
