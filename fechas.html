@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Fechas | Días entre dos fechas | CalculaFácil</title>
+    <meta name="description" content="Calculadora de fechas online gratis. Calcula los días entre dos fechas, cuánto tiempo ha pasado y cuántos días faltan para una fecha.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 22px 20px;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .calculator,
+        .info,
+        .links {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-top: 0;
+            color: #111827;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            font-size: 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #eff6ff;
+            border-radius: 10px;
+            color: #1d4ed8;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .info p {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+
+        .links a {
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .calculator,
+            .info,
+            .links {
+                padding: 22px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header">
+        <div class="logo">CalculaFácil</div>
+        <div>Herramientas gratuitas</div>
+    </div>
+</header>
+
+<main>
+
+<h1>Calculadora de Fechas</h1>
+
+<p class="subtitle">
+Calcula cuántos días hay entre dos fechas y descubre cuánto tiempo ha pasado o cuánto falta.
+</p>
+
+<div class="calculator">
+
+    <h2>Días entre dos fechas</h2>
+
+    <label for="fechaInicio">Fecha inicial</label>
+    <input type="date" id="fechaInicio">
+
+    <label for="fechaFin">Fecha final</label>
+    <input type="date" id="fechaFin">
+
+    <button onclick="calcularDiferencia()">Calcular diferencia</button>
+
+    <div class="result" id="resultadoDiferencia"></div>
+
+</div>
+
+<div class="calculator">
+
+    <h2>¿Cuántos días faltan para una fecha?</h2>
+
+    <label for="fechaObjetivo">Fecha futura</label>
+    <input type="date" id="fechaObjetivo">
+
+    <button onclick="calcularDiasRestantes()">Calcular días restantes</button>
+
+    <div class="result" id="resultadoRestantes"></div>
+
+</div>
+
+<div class="calculator">
+
+    <h2>¿Cuántos días han pasado desde una fecha?</h2>
+
+    <label for="fechaPasada">Fecha</label>
+    <input type="date" id="fechaPasada">
+
+    <button onclick="calcularDiasPasados()">Calcular días transcurridos</button>
+
+    <div class="result" id="resultadoPasados"></div>
+
+</div>
+
+<div class="info">
+
+    <h2>Calculadora de días entre fechas</h2>
+
+    <p>
+        Esta calculadora permite conocer exactamente cuántos días hay entre
+        dos fechas. También puedes utilizarla para saber cuántos días faltan
+        para una fecha determinada o cuántos días han pasado desde una fecha.
+    </p>
+
+    <h2>¿Para qué sirve?</h2>
+
+    <p>
+        Puedes utilizarla para calcular la duración de unas vacaciones,
+        saber cuánto tiempo ha pasado desde un acontecimiento, calcular
+        los días que faltan para un cumpleaños o conocer la diferencia
+        entre dos fechas.
+    </p>
+
+</div>
+
+<div class="links">
+
+    <h2>Otras calculadoras</h2>
+
+    <p>
+        <a href="index.html">Calculadora de porcentajes</a>
+    </p>
+
+    <p>
+        <a href="iva.html">Calculadora de IVA</a>
+    </p>
+
+    <p>
+        <a href="descuentos.html">Calculadora de descuentos</a>
+    </p>
+
+    <p>
+        <a href="edad.html">Calculadora de edad</a>
+    </p>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 CalculaFácil · Calculadoras gratuitas
+</footer>
+
+<script>
+
+function crearFechaUTC(fecha) {
+    const partes = fecha.split("-");
+
+    return Date.UTC(
+        Number(partes[0]),
+        Number(partes[1]) - 1,
+        Number(partes[2])
+    );
+}
+
+function obtenerHoyUTC() {
+    const hoy = new Date();
+
+    return Date.UTC(
+        hoy.getFullYear(),
+        hoy.getMonth(),
+        hoy.getDate()
+    );
+}
+
+function calcularDiferencia() {
+
+    const inicio = document.getElementById("fechaInicio").value;
+    const fin = document.getElementById("fechaFin").value;
+
+    if (!inicio || !fin) {
+        alert("Introduce las dos fechas.");
+        return;
+    }
+
+    const fechaInicio = crearFechaUTC(inicio);
+    const fechaFin = crearFechaUTC(fin);
+
+    const diferencia = Math.abs(fechaFin - fechaInicio);
+    const dias = Math.floor(diferencia / 86400000);
+
+    const semanas = Math.floor(dias / 7);
+    const diasRestantes = dias % 7;
+
+    const resultado = document.getElementById("resultadoDiferencia");
+
+    resultado.innerHTML =
+        "Hay " + dias + " días de diferencia.<br>" +
+        semanas + " semanas y " + diasRestantes + " días.";
+
+    resultado.style.display = "block";
+}
+
+function calcularDiasRestantes() {
+
+    const fechaObjetivo = document.getElementById("fechaObjetivo").value;
+
+    if (!fechaObjetivo) {
+        alert("Introduce una fecha.");
+        return;
+    }
+
+    const objetivo = crearFechaUTC(fechaObjetivo);
+    const hoy = obtenerHoyUTC();
+
+    const diferencia = Math.floor((objetivo - hoy) / 86400000);
+
+    const resultado = document.getElementById("resultadoRestantes");
+
+    if (diferencia > 0) {
+        resultado.innerHTML =
+            "Faltan " + diferencia + " días.";
+    } else if (diferencia === 0) {
+        resultado.innerHTML =
+            "La fecha es hoy.";
+    } else {
+        resultado.innerHTML =
+            "Esa fecha ya pasó hace " + Math.abs(diferencia) + " días.";
+    }
+
+    resultado.style.display = "block";
+}
+
+function calcularDiasPasados() {
+
+    const fechaPasada = document.getElementById("fechaPasada").value;
+
+    if (!fechaPasada) {
+        alert("Introduce una fecha.");
+        return;
+    }
+
+    const pasada = crearFechaUTC(fechaPasada);
+    const hoy = obtenerHoyUTC();
+
+    const diferencia = Math.floor((hoy - pasada) / 86400000);
+
+    const resultado = document.getElementById("resultadoPasados");
+
+    if (diferencia > 0) {
+        resultado.innerHTML =
+            "Han pasado " + diferencia + " días.";
+    } else if (diferencia === 0) {
+        resultado.innerHTML =
+            "La fecha es hoy.";
+    } else {
+        resultado.innerHTML =
+            "Esa fecha es dentro de " + Math.abs(diferencia) + " días.";
+    }
+
+    resultado.style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
