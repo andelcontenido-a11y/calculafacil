@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de IMC | Índice de Masa Corporal | CalculaFácil</title>
+    <meta name="description" content="Calculadora de IMC online gratis. Calcula tu índice de masa corporal introduciendo tu peso y altura y descubre tu resultado.">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #1769e0;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            background: #1769e0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1255b5;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eaf2ff;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .tabla {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .tabla th,
+        .tabla td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .tabla th {
+            background: #f4f7fb;
+        }
+
+        a {
+            color: #1769e0;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>CalculaFácil</h1>
+    <p>Herramientas gratuitas</p>
+</header>
+
+<main>
+
+    <div class="card">
+        <h2>Calculadora de IMC</h2>
+
+        <p>
+            Calcula tu Índice de Masa Corporal introduciendo tu peso y tu altura.
+        </p>
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" step="0.1" min="1" placeholder="Ejemplo: 70">
+
+        <label for="altura">Altura (cm):</label>
+        <input type="number" id="altura" step="0.1" min="1" placeholder="Ejemplo: 175">
+
+        <button onclick="calcularIMC()">Calcular IMC</button>
+
+        <div id="resultado" class="resultado" style="display:none;"></div>
+    </div>
+
+    <div class="card">
+        <h2>¿Cómo se calcula el IMC?</h2>
+
+        <p>
+            El IMC se calcula dividiendo el peso en kilogramos entre la altura
+            en metros elevada al cuadrado.
+        </p>
+
+        <p>
+            <strong>IMC = peso (kg) ÷ altura² (m)</strong>
+        </p>
+
+        <h2>Clasificación del IMC en adultos</h2>
+
+        <table class="tabla">
+            <tr>
+                <th>IMC</th>
+                <th>Clasificación</th>
+            </tr>
+            <tr>
+                <td>Menos de 18,5</td>
+                <td>Bajo peso</td>
+            </tr>
+            <tr>
+                <td>18,5 – 24,9</td>
+                <td>Peso normal</td>
+            </tr>
+            <tr>
+                <td>25 – 29,9</td>
+                <td>Sobrepeso</td>
+            </tr>
+            <tr>
+                <td>30 o más</td>
+                <td>Obesidad</td>
+            </tr>
+        </table>
+
+        <p>
+            El IMC es una medida orientativa y no tiene en cuenta factores como
+            la masa muscular, la distribución de la grasa o la composición corporal.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Otras calculadoras</h2>
+
+        <p><a href="index.html">Calculadora de porcentajes</a></p>
+        <p><a href="iva.html">Calculadora de IVA</a></p>
+        <p><a href="descuentos.html">Calculadora de descuentos</a></p>
+        <p><a href="edad.html">Calculadora de edad</a></p>
+        <p><a href="fechas.html">Calculadora de fechas</a></p>
+        <p><a href="regla-de-tres.html">Calculadora de regla de tres</a></p>
+    </div>
+
+</main>
+
+<script>
+function calcularIMC() {
+    const peso = parseFloat(document.getElementById("peso").value);
+    const alturaCm = parseFloat(document.getElementById("altura").value);
+    const resultado = document.getElementById("resultado");
+
+    if (isNaN(peso) || isNaN(alturaCm) || peso <= 0 || alturaCm <= 0) {
+        resultado.style.display = "block";
+        resultado.textContent = "Introduce un peso y una altura válidos.";
+        return;
+    }
+
+    const altura = alturaCm / 100;
+    const imc = peso / (altura * altura);
+
+    let categoria;
+
+    if (imc < 18.5) {
+        categoria = "Bajo peso";
+    } else if (imc < 25) {
+        categoria = "Peso normal";
+    } else if (imc < 30) {
+        categoria = "Sobrepeso";
+    } else {
+        categoria = "Obesidad";
+    }
+
+    resultado.style.display = "block";
+    resultado.innerHTML =
+        "Tu IMC es <strong>" +
+        imc.toLocaleString("es-ES", {
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1
+        }) +
+        "</strong><br><br>Clasificación: <strong>" +
+        categoria +
+        "</strong>";
+}
+</script>
+
+</body>
+</html>
