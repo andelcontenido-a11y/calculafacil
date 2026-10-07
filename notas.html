@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="google-site-verification" content="M47URQzEFCewXPulpNQyclQ-XoEoM-8g5WyEubIQ2uY">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Notas | CalculaFácil</title>
+
+    <meta name="description" content="Calculadora de notas online gratis. Calcula tu media de notas y descubre qué nota necesitas para aprobar o alcanzar la media que quieres.">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+
+        header {
+            background-color: #1769aa;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            font-size: 16px;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #1769aa;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background-color: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #12578d;
+        }
+
+        .resultado {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #eef6ff;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .resultado p {
+            margin: 9px 0;
+            font-size: 17px;
+        }
+
+        .resultado .principal {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1769aa;
+        }
+
+        .info {
+            margin-top: 30px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .info h2 {
+            margin-top: 0;
+        }
+
+        .info p {
+            line-height: 1.6;
+        }
+
+        .otras {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .otras h2 {
+            margin-top: 0;
+        }
+
+        .otras p {
+            margin: 10px 0;
+        }
+
+        .otras a {
+            color: #1769aa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .otras a:hover {
+            text-decoration: underline;
+        }
+
+        .aviso {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>CalculaFácil</h1>
+    <p>Herramientas gratuitas para tus cálculos</p>
+</header>
+
+<main>
+
+    <div class="calculator">
+
+        <h2>Calculadora de notas</h2>
+
+        <label for="nota1">Nota 1</label>
+        <input type="number" id="nota1" placeholder="Ejemplo: 7" min="0" max="10" step="0.01">
+
+        <label for="nota2">Nota 2</label>
+        <input type="number" id="nota2" placeholder="Ejemplo: 8" min="0" max="10" step="0.01">
+
+        <label for="nota3">Nota 3</label>
+        <input type="number" id="nota3" placeholder="Ejemplo: 6" min="0" max="10" step="0.01">
+
+        <label for="nota4">Nota 4 (opcional)</label>
+        <input type="number" id="nota4" placeholder="Ejemplo: 9" min="0" max="10" step="0.01">
+
+        <label for="nota5">Nota 5 (opcional)</label>
+        <input type="number" id="nota5" placeholder="Ejemplo: 7" min="0" max="10" step="0.01">
+
+        <button onclick="calcularMedia()">Calcular media</button>
+
+        <div class="resultado" id="resultado">
+
+            <p class="principal">
+                Media: <span id="media"></span>
+            </p>
+
+            <p>
+                Calificación aproximada:
+                <strong><span id="calificacion"></span></strong>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <h2>¿Cómo se calcula la media de las notas?</h2>
+
+        <p>
+            Para calcular una media simple se suman todas las notas y se divide
+            el resultado entre el número de notas.
+        </p>
+
+        <p>
+            Por ejemplo, si tienes un 6, un 7 y un 8, la media es:
+            (6 + 7 + 8) ÷ 3 = 7.
+        </p>
+
+        <p>
+            Esta calculadora permite introducir hasta cinco notas y calcula
+            automáticamente la media entre las notas que hayas rellenado.
+        </p>
+
+        <p class="aviso">
+            Esta calculadora utiliza una media aritmética simple. Si tus
+            asignaturas tienen diferentes porcentajes o créditos, necesitarás
+            utilizar una media ponderada.
+        </p>
+
+    </div>
+
+    <div class="otras">
+
+        <h2>Otras calculadoras</h2>
+
+        <p>
+            <a href="index.html">Calculadora de porcentajes</a>
+        </p>
+
+        <p>
+            <a href="iva.html">Calculadora de IVA</a>
+        </p>
+
+        <p>
+            <a href="descuentos.html">Calculadora de descuentos</a>
+        </p>
+
+        <p>
+            <a href="edad.html">Calculadora de edad</a>
+        </p>
+
+        <p>
+            <a href="fechas.html">Calculadora de fechas</a>
+        </p>
+
+        <p>
+            <a href="regla-de-tres.html">Calculadora de regla de tres</a>
+        </p>
+
+        <p>
+            <a href="imc.html">Calculadora de IMC</a>
+        </p>
+
+        <p>
+            <a href="sueldo-neto.html">Calculadora de sueldo neto</a>
+        </p>
+
+        <p>
+            <a href="hipoteca.html">Calculadora de hipoteca</a>
+        </p>
+
+        <p>
+            <a href="interes-compuesto.html">Calculadora de interés compuesto</a>
+        </p>
+
+    </div>
+
+</main>
+
+<script>
+
+function calcularMedia() {
+
+    const campos = [
+        document.getElementById("nota1").value,
+        document.getElementById("nota2").value,
+        document.getElementById("nota3").value,
+        document.getElementById("nota4").value,
+        document.getElementById("nota5").value
+    ];
+
+    const notas = [];
+
+    for (let i = 0; i < campos.length; i++) {
+
+        if (campos[i] !== "") {
+
+            const nota = parseFloat(campos[i]);
+
+            if (isNaN(nota) || nota < 0 || nota > 10) {
+                alert("Las notas deben estar entre 0 y 10.");
+                return;
+            }
+
+            notas.push(nota);
+        }
+    }
+
+    if (notas.length === 0) {
+        alert("Introduce al menos una nota.");
+        return;
+    }
+
+    let suma = 0;
+
+    for (let i = 0; i < notas.length; i++) {
+        suma += notas[i];
+    }
+
+    const media = suma / notas.length;
+
+    let calificacion;
+
+    if (media < 5) {
+        calificacion = "Suspenso";
+    } else if (media < 7) {
+        calificacion = "Aprobado";
+    } else if (media < 9) {
+        calificacion = "Notable";
+    } else {
+        calificacion = "Sobresaliente";
+    }
+
+    document.getElementById("media").textContent =
+        media.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+    document.getElementById("calificacion").textContent =
+        calificacion;
+
+    document.getElementById("resultado").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
