@@ -1,177 +1,232 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+
     <meta name="google-site-verification" content="M47URQzEFCewXPulpNQyclQ-XoEoM-8g5WyEubIQ2uY" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculadora de Porcentajes | CalculaFácil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Calculadora de porcentajes online gratis. Calcula porcentajes, aumentos, descuentos y qué porcentaje representa una cantidad.">
+    <title>Calculadora de Porcentajes Online | CalculaFácil</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <meta name="description" content="Calculadora de porcentajes online gratis. Calcula porcentajes, aumentos, descuentos y qué porcentaje representa una cantidad de forma rápida y sencilla.">
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f7fb;
-    color: #1f2937;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-header {
-    background: #2563eb;
-    color: white;
-    padding: 22px 20px;
-}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
 
-.header {
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 22px 20px;
+        }
 
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-}
+        .header {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
 
-h1 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: #111827;
-}
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-.subtitle {
-    text-align: center;
-    color: #6b7280;
-    font-size: 17px;
-    margin-bottom: 35px;
-}
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
 
-.calculator {
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    margin-bottom: 30px;
-}
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 17px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
 
-.calculation {
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-}
+        .calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
 
-.calculation:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
+        .calculation {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
 
-h2 {
-    font-size: 20px;
-    margin-top: 0;
-    color: #111827;
-}
+        .calculation:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
 
-label {
-    display: block;
-    font-weight: bold;
-    margin: 12px 0 7px;
-}
+        h2 {
+            font-size: 20px;
+            margin-top: 0;
+            color: #111827;
+        }
 
-input {
-    width: 100%;
-    padding: 13px;
-    font-size: 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 9px;
-}
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 12px 0 7px;
+        }
 
-input:focus {
-    outline: none;
-    border-color: #2563eb;
-}
+        input {
+            width: 100%;
+            padding: 13px;
+            font-size: 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+        }
 
-button {
-    width: 100%;
-    margin-top: 15px;
-    padding: 14px;
-    border: none;
-    border-radius: 9px;
-    background: #2563eb;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
 
-button:hover {
-    background: #1d4ed8;
-}
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-.result {
-    display: none;
-    margin-top: 18px;
-    padding: 18px;
-    background: #eff6ff;
-    border-radius: 10px;
-    color: #1d4ed8;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-}
+        button:hover {
+            background: #1d4ed8;
+        }
 
-.info {
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
+        .result {
+            display: none;
+            margin-top: 18px;
+            padding: 18px;
+            background: #eff6ff;
+            border-radius: 10px;
+            color: #1d4ed8;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
 
-.info h2 {
-    font-size: 25px;
-}
+        .info {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
 
-.info p {
-    color: #4b5563;
-    line-height: 1.7;
-}
+        .info h2 {
+            font-size: 25px;
+            margin-top: 0;
+        }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #6b7280;
-    font-size: 14px;
-}
+        .info h2:not(:first-child) {
+            margin-top: 30px;
+        }
 
-@media (max-width: 600px) {
-    h1 {
-        font-size: 28px;
-    }
+        .info p {
+            color: #4b5563;
+            line-height: 1.7;
+        }
 
-    .calculator,
-    .info {
-        padding: 22px;
-    }
+        .tools {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
 
-    .header {
-        flex-direction: column;
-        gap: 5px;
-    }
-}
-</style>
+        .tools h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .tools-intro {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .tools-grid a {
+            display: block;
+            padding: 14px 16px;
+            background: #f4f7fb;
+            border-radius: 9px;
+            color: #1769aa;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .tools-grid a:hover {
+            background: #e5efff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .calculator,
+            .info,
+            .tools {
+                padding: 22px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -185,209 +240,219 @@ footer {
 
 <main>
 
-<h1>Calculadora de Porcentajes</h1>
+    <h1>Calculadora de Porcentajes Online</h1>
 
-<p class="subtitle">
-Calcula porcentajes, aumentos, descuentos y mucho más de forma rápida y gratuita.
-</p>
+    <p class="subtitle">
+        Calcula porcentajes, aumentos, reducciones y descuentos de forma
+        rápida, sencilla y gratuita.
+    </p>
 
-<div class="calculator">
 
-    <div class="calculation">
+    <div class="calculator">
 
-        <h2>¿Cuánto es un porcentaje de una cantidad?</h2>
+        <div class="calculation">
 
-        <label>Porcentaje (%)</label>
-        <input type="number" id="p1" placeholder="Ejemplo: 20">
+            <h2>¿Cuánto es un porcentaje de una cantidad?</h2>
 
-        <label>Cantidad</label>
-        <input type="number" id="n1" placeholder="Ejemplo: 500">
+            <label for="p1">Porcentaje (%)</label>
+            <input type="number" id="p1" placeholder="Ejemplo: 20">
 
-        <button onclick="calcular1()">Calcular</button>
+            <label for="n1">Cantidad</label>
+            <input type="number" id="n1" placeholder="Ejemplo: 500">
 
-        <div class="result" id="r1"></div>
+            <button onclick="calcular1()">Calcular</button>
+
+            <div class="result" id="r1"></div>
+
+        </div>
+
+
+        <div class="calculation">
+
+            <h2>¿Qué porcentaje representa una cantidad?</h2>
+
+            <label for="p2">Parte</label>
+            <input type="number" id="p2" placeholder="Ejemplo: 30">
+
+            <label for="n2">Total</label>
+            <input type="number" id="n2" placeholder="Ejemplo: 150">
+
+            <button onclick="calcular2()">Calcular</button>
+
+            <div class="result" id="r2"></div>
+
+        </div>
+
+
+        <div class="calculation">
+
+            <h2>Aumentar una cantidad en un porcentaje</h2>
+
+            <label for="n3">Cantidad inicial</label>
+            <input type="number" id="n3" placeholder="Ejemplo: 100">
+
+            <label for="p3">Aumento (%)</label>
+            <input type="number" id="p3" placeholder="Ejemplo: 20">
+
+            <button onclick="calcular3()">Calcular</button>
+
+            <div class="result" id="r3"></div>
+
+        </div>
+
+
+        <div class="calculation">
+
+            <h2>Reducir una cantidad en un porcentaje</h2>
+
+            <label for="n4">Cantidad inicial</label>
+            <input type="number" id="n4" placeholder="Ejemplo: 100">
+
+            <label for="p4">Reducción (%)</label>
+            <input type="number" id="p4" placeholder="Ejemplo: 20">
+
+            <button onclick="calcular4()">Calcular</button>
+
+            <div class="result" id="r4"></div>
+
+        </div>
 
     </div>
 
 
-    <div class="calculation">
+    <div class="info">
 
-        <h2>¿Qué porcentaje representa una cantidad?</h2>
+        <h2>¿Cómo calcular un porcentaje?</h2>
 
-        <label>Parte</label>
-        <input type="number" id="p2" placeholder="Ejemplo: 30">
+        <p>
+            Calcular un porcentaje es muy sencillo. Para saber cuánto representa
+            un porcentaje de una cantidad, multiplica la cantidad por el porcentaje
+            y divide el resultado entre 100.
+        </p>
 
-        <label>Total</label>
-        <input type="number" id="n2" placeholder="Ejemplo: 150">
+        <p>
+            Por ejemplo, para calcular el 20 % de 500:
+        </p>
 
-        <button onclick="calcular2()">Calcular</button>
+        <p>
+            <strong>500 × 20 ÷ 100 = 100</strong>
+        </p>
 
-        <div class="result" id="r2"></div>
+        <p>
+            Por lo tanto, el 20 % de 500 es 100.
+        </p>
 
-    </div>
+        <h2>¿Para qué sirve una calculadora de porcentajes?</h2>
 
+        <p>
+            Una calculadora de porcentajes permite resolver rápidamente
+            operaciones habituales como calcular una parte de una cantidad,
+            saber qué porcentaje representa un valor respecto a otro o conocer
+            el resultado de aplicar un aumento o una reducción porcentual.
+        </p>
 
-    <div class="calculation">
-
-        <h2>Aumentar una cantidad en un porcentaje</h2>
-
-        <label>Cantidad inicial</label>
-        <input type="number" id="n3" placeholder="Ejemplo: 100">
-
-        <label>Aumento (%)</label>
-        <input type="number" id="p3" placeholder="Ejemplo: 20">
-
-        <button onclick="calcular3()">Calcular</button>
-
-        <div class="result" id="r3"></div>
-
-    </div>
-
-
-    <div class="calculation">
-
-        <h2>Reducir una cantidad en un porcentaje</h2>
-
-        <label>Cantidad inicial</label>
-        <input type="number" id="n4" placeholder="Ejemplo: 100">
-
-        <label>Reducción (%)</label>
-        <input type="number" id="p4" placeholder="Ejemplo: 20">
-
-        <button onclick="calcular4()">Calcular</button>
-
-        <div class="result" id="r4"></div>
+        <p>
+            Puede resultar útil para calcular descuentos, incrementos de precios,
+            impuestos, estadísticas, notas, gastos y muchas otras operaciones
+            cotidianas.
+        </p>
 
     </div>
 
-</div> 
 
-    
-<div class="calculator">
+    <div class="tools">
 
-    <section>
-    <h2>Calculadora de porcentajes online</h2>
+        <h2>Otras calculadoras gratuitas</h2>
 
-    <p>
-        Calcula porcentajes de forma rápida y sencilla con nuestra calculadora
-        online gratuita. Puedes calcular cuánto es un porcentaje de una
-        cantidad, descubrir qué porcentaje representa una cantidad respecto a
-        otra y calcular aumentos o reducciones porcentuales.
-    </p>
+        <p class="tools-intro">
+            Además de calcular porcentajes, puedes utilizar nuestras otras
+            herramientas online gratuitas para realizar diferentes cálculos.
+        </p>
 
-    <p>
-        También puedes utilizar nuestras calculadoras gratuitas de IVA,
-        descuentos, edad, fechas, regla de tres, IMC, sueldo neto, hipoteca,
-        interés compuesto, notas y finiquito.
-    </p>
+        <div class="tools-grid">
 
-    <p>
-        Introduce los valores que necesitas y obtén el resultado al instante,
-        sin registros y desde cualquier dispositivo.
-    </p>
-</section>
+            <a href="iva.html">
+                Calculadora de IVA
+            </a>
 
-    <h2>Otras calculadoras</h2>
+            <a href="descuentos.html">
+                Calculadora de descuentos
+            </a>
 
-    <p>
-        <a href="iva.html">Calculadora de IVA</a>
-    </p>
+            <a href="edad.html">
+                Calculadora de edad
+            </a>
 
-    <p>
-    <a href="descuentos.html">Calculadora de descuentos</a>
-</p>
+            <a href="fechas.html">
+                Calculadora de fechas
+            </a>
 
-<p>
-    <a href="edad.html">Calculadora de edad</a>
-</p>
+            <a href="regla-de-tres.html">
+                Calculadora de regla de tres
+            </a>
 
-    <p>
-    <a href="fechas.html">Calculadora de fechas</a>
-</p>
+            <a href="imc.html">
+                Calculadora de IMC
+            </a>
 
-<p>
-    <a href="regla-de-tres.html">Calculadora de regla de tres</a>
-</p>
+            <a href="sueldo-neto.html">
+                Calculadora de sueldo neto
+            </a>
 
-<p>
-    <a href="imc.html">Calculadora de IMC</a>
-</p>
+            <a href="hipoteca.html">
+                Calculadora de hipoteca
+            </a>
 
-<p>
-    <a href="sueldo-neto.html">Calculadora de sueldo neto</a>
-</p>
-    <p>
-    <a href="hipoteca.html">Calculadora de hipoteca</a>
-</p>
-    <p>
-    <a href="interes-compuesto.html">Calculadora de interés compuesto</a>
-</p>
+            <a href="interes-compuesto.html">
+                Calculadora de interés compuesto
+            </a>
 
-    <p>
-    <a href="notas.html">Calculadora de notas</a>
-</p>
+            <a href="notas.html">
+                Calculadora de notas
+            </a>
 
-    <p>
-    <a href="finiquito.html">Calculadora de finiquito</a>
-</p>
-    
-</div>
+            <a href="finiquito.html">
+                Calculadora de finiquito
+            </a>
 
-<div class="info">
+        </div>
 
-<h2>¿Cómo calcular un porcentaje?</h2>
-
-<p>
-Calcular un porcentaje es muy sencillo. Para saber cuánto representa
-un porcentaje de una cantidad, multiplica la cantidad por el porcentaje
-y divide el resultado entre 100.
-</p>
-
-<p>
-Por ejemplo, para calcular el 20 % de 500:
-</p>
-
-<p>
-<strong>500 × 20 ÷ 100 = 100</strong>
-</p>
-
-<p>
-Por lo tanto, el 20 % de 500 es 100.
-</p>
-
-<h2>Calculadora de porcentajes online</h2>
-
-<p>
-Utiliza nuestras herramientas para calcular porcentajes,
-aumentos y reducciones de forma rápida y gratuita.
-No necesitas instalar ninguna aplicación.
-</p>
-
-</div>
+    </div>
 
 </main>
 
+
 <footer>
-© 2026 CalculaFácil · Calculadoras gratuitas
+    © 2026 CalculaFácil · Calculadoras gratuitas
 </footer>
 
 
 <script>
 
 function mostrar(id, texto) {
+
     const resultado = document.getElementById(id);
+
     resultado.innerText = texto;
+
     resultado.style.display = "block";
 }
 
 
 function calcular1() {
 
-    const porcentaje = Number(document.getElementById("p1").value);
-    const cantidad = Number(document.getElementById("n1").value);
+    const porcentaje = Number(
+        document.getElementById("p1").value
+    );
+
+    const cantidad = Number(
+        document.getElementById("n1").value
+    );
 
     if (isNaN(porcentaje) || isNaN(cantidad)) {
+
         alert("Introduce los dos valores.");
+
         return;
     }
 
@@ -402,11 +467,18 @@ function calcular1() {
 
 function calcular2() {
 
-    const parte = Number(document.getElementById("p2").value);
-    const total = Number(document.getElementById("n2").value);
+    const parte = Number(
+        document.getElementById("p2").value
+    );
+
+    const total = Number(
+        document.getElementById("n2").value
+    );
 
     if (total === 0 || isNaN(parte) || isNaN(total)) {
+
         alert("Introduce valores válidos.");
+
         return;
     }
 
@@ -414,22 +486,33 @@ function calcular2() {
 
     mostrar(
         "r2",
-        parte + " representa el " + resultado.toFixed(2) + "% de " + total
+        parte + " representa el " +
+        resultado.toFixed(2) +
+        "% de " +
+        total
     );
 }
 
 
 function calcular3() {
 
-    const cantidad = Number(document.getElementById("n3").value);
-    const porcentaje = Number(document.getElementById("p3").value);
+    const cantidad = Number(
+        document.getElementById("n3").value
+    );
+
+    const porcentaje = Number(
+        document.getElementById("p3").value
+    );
 
     if (isNaN(cantidad) || isNaN(porcentaje)) {
+
         alert("Introduce los dos valores.");
+
         return;
     }
 
-    const resultado = cantidad * (1 + porcentaje / 100);
+    const resultado =
+        cantidad * (1 + porcentaje / 100);
 
     mostrar(
         "r3",
@@ -440,15 +523,23 @@ function calcular3() {
 
 function calcular4() {
 
-    const cantidad = Number(document.getElementById("n4").value);
-    const porcentaje = Number(document.getElementById("p4").value);
+    const cantidad = Number(
+        document.getElementById("n4").value
+    );
+
+    const porcentaje = Number(
+        document.getElementById("p4").value
+    );
 
     if (isNaN(cantidad) || isNaN(porcentaje)) {
+
         alert("Introduce los dos valores.");
+
         return;
     }
 
-    const resultado = cantidad * (1 - porcentaje / 100);
+    const resultado =
+        cantidad * (1 - porcentaje / 100);
 
     mostrar(
         "r4",
